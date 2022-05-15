@@ -76,6 +76,7 @@ public final class RunSerengetiParkScenario {
 		}
 
 		Config config = prepareConfig( args ) ;
+		config.controler().setLastIteration(10);
 		Scenario scenario = prepareScenario( config ) ;
 		Controler controler = prepareControler( scenario ) ;
 		controler.run();
