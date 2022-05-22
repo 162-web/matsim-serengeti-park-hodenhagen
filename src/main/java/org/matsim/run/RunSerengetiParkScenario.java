@@ -33,6 +33,7 @@ import org.matsim.core.config.ConfigGroup;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.groups.PlansCalcRouteConfigGroup;
 import org.matsim.core.controler.Controler;
+import org.matsim.core.controler.OutputDirectoryHierarchy;
 import org.matsim.core.controler.OutputDirectoryLogging;
 import org.matsim.core.gbl.Gbl;
 import org.matsim.core.scenario.ScenarioUtils;
@@ -77,6 +78,7 @@ public final class RunSerengetiParkScenario {
 
 		Config config = prepareConfig( args ) ;
 		config.controler().setLastIteration(10);
+		config.controler().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
 		Scenario scenario = prepareScenario( config ) ;
 		Controler controler = prepareControler( scenario ) ;
 		controler.run();
@@ -85,9 +87,9 @@ public final class RunSerengetiParkScenario {
 	public static Controler prepareControler( Scenario scenario ) {
 		
 		Gbl.assertNotNull(scenario);
-		
+
 		final Controler controler = new Controler( scenario );
-		
+
 //		controler.addOverridingModule( new OTFVisLiveModule() ) ;
 		
 		return controler;
